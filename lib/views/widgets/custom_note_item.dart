@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.color});
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 8.h),
       padding: EdgeInsets.only(top: 20.h,bottom: 24.w,left: 16.w),
       decoration: BoxDecoration(
-        color: Color(0xfffecd7e),
+        color: color,
         borderRadius: BorderRadius.circular(16.r),
       ),
 
