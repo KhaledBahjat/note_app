@@ -15,7 +15,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   void dispose() {
     titleController.dispose();
@@ -50,19 +50,30 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                 controller: titleController,
                 hintText: 'Title',
                 maxLines: 1,
+                onSaved: (value) {
+                  titleController.text = value ?? '';
+                },
               ),
               HeightSpace(height: 16),
               CustomTextField(
                 controller: contentController,
                 hintText: 'Content',
                 maxLines: 5,
+                onSaved: (value) {
+                  contentController.text = value ?? '';
+                },
               ),
               HeightSpace(height: 24),
               CustomButton(
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    
+                    formKey.currentState!.save();
+
                     Navigator.pop(context);
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
                   }
                 },
               ),
@@ -74,4 +85,3 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
     );
   }
 }
-
