@@ -1,47 +1,40 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SimpleBlocObserver implements BlocObserver {
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    debugPrint('change: $change');
+    debugPrint('onChange -- ${bloc.runtimeType}, $change');
   }
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
-    // TODO: implement onClose
+    debugPrint('onClose -- ${bloc.runtimeType}');
   }
 
   @override
   void onCreate(BlocBase<dynamic> bloc) {
-    // TODO: implement onCreate
+    debugPrint('onCreate -- ${bloc.runtimeType}');
   }
 
   @override
-  void onDone(
-    Bloc<dynamic, dynamic> bloc,
-    Object? event, [
-    Object? error,
-    StackTrace? stackTrace,
-  ]) {
-    // TODO: implement onDone
+  void onDone(Bloc<dynamic, dynamic> bloc, Object? event, [Object? error, StackTrace? stackTrace]) {
+    debugPrint('onDone -- ${bloc.runtimeType}, $event');
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    // TODO: implement onError
+    debugPrint('onError -- ${bloc.runtimeType}, $error');
   }
 
   @override
   void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
-    // TODO: implement onEvent
+    debugPrint('onEvent -- ${bloc.runtimeType}, $event');
   }
 
   @override
-  void onTransition(
-    Bloc<dynamic, dynamic> bloc,
-    Transition<dynamic, dynamic> transition,
-  ) {
-    // TODO: implement onTransition
+  void onTransition(Bloc<dynamic, dynamic> bloc, Transition<dynamic, dynamic> transition) {
+    debugPrint('onTransition -- ${bloc.runtimeType}, $transition');
   }
+  
 }

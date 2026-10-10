@@ -18,7 +18,6 @@ void main() async {
 
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
